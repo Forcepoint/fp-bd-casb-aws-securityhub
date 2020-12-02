@@ -1,0 +1,11 @@
+[Unit]
+Description=Run casb-siem-aws-securityhub-batch.service weekly and 30 minutes after boot up
+Requires=casb-siem-aws-securityhub-batch.service
+
+[Timer] 
+OnBootSec=30min
+OnUnitActiveSec=1w
+Unit=casb-siem-aws-securityhub-batch.service 
+
+[Install]
+WantedBy=multi-user.target

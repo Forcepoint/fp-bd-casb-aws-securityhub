@@ -1,0 +1,434 @@
+[
+    {
+        "Name": "Forcepoint CASB - Block Multiple instance termination",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Block Multiple instance termination/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Brute Force",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Brute Force/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Block Unapproved EC2 instances",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Block Unapproved EC2 instances/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Data Identifier",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Data Identifier/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Delegated Admin Role Changes",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Delegated Admin Role Changes/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Block Access to personal Office365",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Block Access to personal Office365/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Sharing Rules Changed",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Sharing Rules Changed/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - 3 Login from different endpoints in 30m",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "3 Login from different endpoints in 30m/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Audit Sensitive documents in the cloud",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Audit Sensitive documents in the cloud/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - DLPS200 - Blacklist Country Login",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "DLPS200 - Blacklist Country Login/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Prevent uploading to non-corp domain",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Prevent uploading to non-corp domain/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Prevent Email forwarding",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Prevent Email forwarding/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Malicious or Compromised Insider",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Malicious or Compromised Insider/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Endpoint Management",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Endpoint Management/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Client Locations",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Client Locations/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Audit sensitive data types in API access",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Audit sensitive data types in API access/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Limit Office365 access to emails from unmanaged endpoint",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Limit Office365 access to emails from unmanaged endpoint/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    },
+    {
+        "Name": "Forcepoint CASB - Track roaming User",
+        "Filters": {
+            "Type": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "Unusual Behaviors/Application/ForcepointCASB"
+                }
+            ],
+            "Title": [
+                {
+                    "Comparison": "PREFIX",
+                    "Value": "Track roaming User/"
+                }
+            ],
+            "RecordState": [
+                {
+                    "Comparison": "EQUALS",
+                    "Value": "ACTIVE"
+                }
+            ]
+        },
+        "GroupByAttribute": "SeverityLabel"
+    }
+]

@@ -1,0 +1,11 @@
+[Unit]
+Description=This service picks up all SIEM missed files due to network down... and upload them into AWS Security Hub
+
+[Service]
+Environment=
+WorkingDirectory=
+User=
+ExecStart=/bin/bash -c 'pipenv run python ${APP_HOME}/src/modules/main_siem_watcher_batch.py'
+
+[Install]
+WantedBy=multi-user.target

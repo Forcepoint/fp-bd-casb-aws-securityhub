@@ -1,0 +1,11 @@
+[Unit]
+Description=Triggers casb-siem-batch.service to run again for any new events to be picked up by casb-siem-aws-securityhub.service
+Requires=casb-siem-batch.service
+After=casb-siem-batch.service
+
+[Service]
+Environment=
+ExecStart=/bin/bash -c '${APP_HOME}/deploy/casb-siem-batch-timer.sh'
+
+[Install]
+WantedBy=multi-user.target

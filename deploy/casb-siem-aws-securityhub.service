@@ -1,0 +1,15 @@
+[Unit]
+Description=This service watches SIEM tool folder for events, incidents and activities and upload them into AWS Security Hub
+
+[Service]
+Environment=
+WorkingDirectory=
+User=
+ExecStart=/bin/bash -c 'pipenv run python ${APP_HOME}/src/modules/main_siem_watcher_stream.py'
+Restart=on-failure
+RestartSec=60
+StartLimitBurst=3
+StartLimitInterval=360
+
+[Install]
+WantedBy=multi-user.target

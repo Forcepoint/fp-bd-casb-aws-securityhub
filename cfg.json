@@ -1,0 +1,12 @@
+{
+    "siemPath": "",
+    "firstRunSendHistoricalData": true,
+    "deleteSiemFiles": true,
+    "severityFilterInclude": ["Info", "Low", "Medium", "High", "Critical"],
+    "actionFilterInclude": ["Block", "Monitor"],
+    "productFilterInclude": ["SaaS Security Gateway", "CASB Incidents", "CASB Admin audit log", "Cloud Service Monitoring"],
+    "awsAccountId": "",
+    "awsAccessKeyId": "",
+    "awsSecretAccessKey": "",
+    "regionName": ""
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=This service runs the CASB SIEM tool
+
+[Service]
+Environment=
+User=
+ExecStart=/bin/bash -c '${APP_HOME}/deploy/start-casb-siem-batch-process.sh'
+
+[Install]
+WantedBy=multi-user.target
