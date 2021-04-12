@@ -97,7 +97,8 @@ def map_casb_cef_to_asff(cef_casb_dict, user_config):
         cef_casb_dict,
         user_config["awsAccountId"],
         get_aws_fp_casb_product_arn(
-            user_config["regionName"], user_config["awsAccountId"]
+            user_config["regionName"],
+            user_config["govFlag"],
         ),
     )
 
@@ -131,6 +132,7 @@ def proccess_cef_file(configs, securityhub_client, file_path):
     with open(file_path) as f:
         lines = f.readlines()
         count = 0
+        original_findings_lst = []
         aws_batch = []
         last_line_index = len(lines) - 1
         logging.info(
@@ -146,11 +148,18 @@ def proccess_cef_file(configs, securityhub_client, file_path):
             ):
                 asff_record = map_casb_cef_to_asff(cef_dict, configs.user_config)
                 aws_batch.append(asff_record)
+                original_findings_lst.append(line)
                 count += 1
             if count == AWS_SECURITYHUB_BATCH_LIMIT or i == last_line_index:
-                send_aws_securityhub_data(securityhub_client, aws_batch)
+                send_aws_securityhub_data(
+                    securityhub_client,
+                    aws_batch,
+                    original_findings_lst,
+                    configs.missed_dir,
+                )
                 count = 0
                 aws_batch = []
+                original_findings_lst = []
         os.remove(file_path)
 
 

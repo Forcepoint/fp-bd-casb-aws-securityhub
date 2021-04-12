@@ -17,9 +17,13 @@ class LogConfig:
         logging_handler = RotatingFileHandler(
             self.log_file_path, maxBytes=int(1e7), backupCount=2
         )
+
+        __consoleHandler = logging.StreamHandler()
+        __consoleHandler.setLevel(logging.ERROR)
+
         logging.basicConfig(
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
             datefmt="%Y-%m-%d %H:%M:%S",
-            handlers=[logging_handler],
+            handlers=[logging_handler, __consoleHandler],
         )

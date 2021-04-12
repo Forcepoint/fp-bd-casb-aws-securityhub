@@ -4,14 +4,14 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
 
 [packages]
-watchdog = "~=0.10.2"
-boto3 = "~=1.12.32"
+watchdog = "~=2.0.2"
+boto3 = "~=1.17.41"
 
 [dev-packages]
-black = "==19.3b0"
+black = "==20.8b1"
 flake8 = "*"
 isort = "*"
 mypy = "*"

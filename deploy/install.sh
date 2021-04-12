@@ -25,4 +25,5 @@ main() {
     sudo chmod +x "${_dir}"/*.sh
 }
 
-main "$@"
+echo "Traditional setup is not supported anymore, please see the docker setup instead"
+# main "$@"

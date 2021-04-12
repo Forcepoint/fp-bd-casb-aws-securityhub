@@ -64,6 +64,10 @@ def test_pupulate_cef_filter_list() -> None:
 
 def test_get_aws_fp_casb_product_arn() -> None:
     assert (
-        c.get_aws_fp_casb_product_arn("eu-central-1", "123")
-        == "arn:aws:securityhub:eu-central-1:123:product/forcepoint/forcepoint-casb"
+        c.get_aws_fp_casb_product_arn("eu-central-1", False)
+        == "arn:aws:securityhub:eu-central-1:365761988620:product/forcepoint/forcepoint-casb"
+    )
+    assert (
+        c.get_aws_fp_casb_product_arn("eu-west-1", True)
+        == "arn:aws-us-gov:securityhub:eu-west-1:365761988620:product/forcepoint/forcepoint-casb"
     )

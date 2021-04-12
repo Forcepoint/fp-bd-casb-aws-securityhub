@@ -34,23 +34,7 @@ This tool is provided by forcepoint CASB.
 
 In this process logs are configured to rotated by size of 20mb into max of 5 rotated files.
 
-Prerequisites are: python3 pipenv openjdk8
-
-```bash
-./deploy/install.sh
-```
-
-To build the application run:
-
-```bash
-./deploy/setup.sh
-```
-
-To deploy the application under systemd run:
-
-```bash
-./deploy/deploy.sh
-```
+Prerequisites are: python3.8 pipenv openjdk8
 
 Code tests can be run by
 
@@ -65,6 +49,7 @@ pipenv run pytest
 - severityFilterInclude: remove any values in ["Info", "Low", "Medium", "High", "Critical"] if not required to send to AWS Security Hub e.g. ["High", "Critical"]
 - actionFilterInclude: remove any values in ["Block", "Monitor"] if not required to send to AWS Security Hub e.g. ["Block"]
 - productFilterInclude: remove any values in ["SaaS Security Gateway", "CASB Incidents", "CASB Admin audit log", "Cloud Service Monitoring"] if not required to send to AWS Security Hub
+- govFlag: government or commercial integration, set to false by default for commercial
 - AWS Configurations:
   - awsAccountId
   - awsAccessKeyId
@@ -84,6 +69,7 @@ pipenv run pytest
         "CASB Admin audit log",
         "Cloud Service Monitoring"
     ],
+    "govFlag": false,
     "awsAccountId": "",
     "awsAccessKeyId": "",
     "awsSecretAccessKey": "",
@@ -107,7 +93,7 @@ Note: this depends on fp-casb-siem-importer container running
 docker run -itd \
    --name fp-casb-exporter-aws \
    --env-file $PWD/cfg.env \
-   -v CasbActivityFilesVolume:/usr/fp-casb-siem-importer/casb-activity-files \
+   --volume FpCasbLogsVolume:/forcepoint-logs \
    fp-casb-exporter-aws
 ```
 
@@ -117,7 +103,7 @@ Note: this depends on fp-casb-siem-importer container running
 ```bash
 docker run -itd \
    --name fp-casb-exporter-aws \
-   -v $PWD/cfg.json:/usr/fp-casb-exporter-aws/cfg.json \
-   -v CasbActivityFilesVolume:/usr/fp-casb-siem-importer/casb-activity-files \
+   --volume $PWD/cfg.json:/usr/fp-casb-exporter-aws/cfg.json \
+   --volume FpCasbLogsVolume:/forcepoint-logs \
    fp-casb-exporter-aws
 ```

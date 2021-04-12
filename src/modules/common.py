@@ -108,12 +108,22 @@ def get_json_content(file_path):
         return json.load(json_file)
 
 
-def write_to_a_file(file_path, content):
+def write_json_to_a_file(file_path, content):
     with open(file_path, "w+") as f:
         f.write(json.dumps(content))
 
 
-def get_aws_fp_casb_product_arn(region_name, aws_account_id):
-    return "arn:aws:securityhub:{}:{}:product/forcepoint/forcepoint-casb".format(
-        region_name, aws_account_id
-    )
+def get_aws_fp_casb_product_arn(region_name, gov_flag):
+    if gov_flag:
+        return "arn:aws-us-gov:securityhub:{}:365761988620:product/forcepoint/forcepoint-casb".format(
+            region_name
+        )
+    else:
+        return "arn:aws:securityhub:{}:365761988620:product/forcepoint/forcepoint-casb".format(
+            region_name
+        )
+
+
+def write_to_a_file(file_path, content_lst):
+    with open(file_path, "w+") as f:
+        f.writelines(content_lst)

@@ -1,10 +1,9 @@
 import logging
 import time
 
+from utils import process_siem_event_file
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
-
-from utils import process_siem_event_file
 
 
 class Watcher:

@@ -6,9 +6,14 @@ from signal import SIGTERM
 
 import boto3
 from botocore.exceptions import ClientError, EndpointConnectionError
-
-from common import get_aws_fp_casb_product_arn, get_json_content, write_to_a_file
-from program_constants import MAX_RETRIES
+from common import (
+    get_aws_fp_casb_product_arn,
+    get_current_epoch_timestamp_in_ms,
+    get_json_content,
+    write_json_to_a_file,
+    write_to_a_file,
+)
+from program_constants import CEF_EXT, MAX_RETRIES
 
 """ securityhub """
 
@@ -32,20 +37,43 @@ def is_securityhub_connection_available(securityhub_client):
     return False
 
 
-async def aws_security_hub_batch_upload(securityhub_client, asff_findings):
+async def aws_security_hub_batch_upload(
+    securityhub_client, asff_findings, original_findings_lst, missed_dir
+):
     try:
         logging.info(securityhub_client.batch_import_findings(Findings=asff_findings))
-    except (ClientError, EndpointConnectionError) as exception:
-        logging.error(exception)
+    except (ClientError, EndpointConnectionError) as error:
+        # the documentation mentioned ThrottlingException status code 400! hence adding extra checks
+        if error.response["ResponseMetadata"][
+            "HTTPStatusCode"
+        ] == 429 or error.response["Error"]["Code"] in (
+            "LimitExceededException",
+            "ThrottlingException",
+        ):
+            # write to missed_dir to proceess latter
+            __file_name = get_current_epoch_timestamp_in_ms()
+            write_to_a_file(
+                "{}/throttling_{}{}".format(missed_dir, __file_name, CEF_EXT),
+                original_findings_lst,
+            )
+            logging.warn(
+                "aws_security_hub_batch_upload - API call limit exceeded; backing off and adding the content into a missed directory"
+            )
+        else:
+            logging.error(error)
 
 
-def send_aws_securityhub_data(securityhub_client, asff_list):
+def send_aws_securityhub_data(
+    securityhub_client, asff_list, original_findings_lst, missed_dir
+):
     logging.info("send_aws_securityhub_data: {}".format(str(len(asff_list))))
     if len(asff_list) > 0:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         task = loop.create_task(
-            aws_security_hub_batch_upload(securityhub_client, asff_list)
+            aws_security_hub_batch_upload(
+                securityhub_client, asff_list, original_findings_lst, missed_dir
+            )
         )
         loop.run_until_complete(task)
 
@@ -74,7 +102,7 @@ def create_securityhub_insights(user_config, default_insights_file, insights_arn
                     )
                     response_list.append(response["InsightArn"])
                 logging.info("Insights are created: {}".format(response_list))
-                write_to_a_file(insights_arns_file, response_list)
+                write_json_to_a_file(insights_arns_file, response_list)
             except securityhub_client.exceptions.LimitExceededException:
                 logging.info("create_securityhub_insights - LimitExceededException")
         else:
@@ -86,7 +114,8 @@ def enable_securityhub_product(user_config):
     if is_securityhub_connection_available(securityhub_client):
         try:
             casb_product_arn = get_aws_fp_casb_product_arn(
-                user_config["regionName"], user_config["awsAccountId"]
+                user_config["regionName"],
+                user_config["govFlag"],
             )
             response = securityhub_client.enable_import_findings_for_product(
                 ProductArn=casb_product_arn

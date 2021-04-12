@@ -41,7 +41,7 @@ setup_systemd_home_dir() {
 
 main() {
     cd "${_dir}"
-    local __prerequisites=(python3.6 pipenv systemctl)
+    local __prerequisites=(python3.8 java pipenv systemctl)
     local __home_dir_variable_name="APP_HOME"
     local __config_file="${_home_folder}"/cfg.json
     local -r __user="$(whoami)"
