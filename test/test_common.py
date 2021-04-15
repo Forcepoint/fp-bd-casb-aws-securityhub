@@ -69,5 +69,5 @@ def test_get_aws_fp_casb_product_arn() -> None:
     )
     assert (
         c.get_aws_fp_casb_product_arn("eu-west-1", True)
-        == "arn:aws-us-gov:securityhub:eu-west-1:365761988620:product/forcepoint/forcepoint-casb"
+        == "arn:aws-us-gov:securityhub:eu-west-1::product/forcepoint/forcepoint-casb"
     )

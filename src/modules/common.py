@@ -115,7 +115,7 @@ def write_json_to_a_file(file_path, content):
 
 def get_aws_fp_casb_product_arn(region_name, gov_flag):
     if gov_flag:
-        return "arn:aws-us-gov:securityhub:{}:365761988620:product/forcepoint/forcepoint-casb".format(
+        return "arn:aws-us-gov:securityhub:{}::product/forcepoint/forcepoint-casb".format(
             region_name
         )
     else:
