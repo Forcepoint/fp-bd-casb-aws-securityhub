@@ -93,7 +93,7 @@ Note: this depends on fp-casb-siem-importer container running
 docker run -itd \
    --name fp-casb-exporter-aws \
    --env-file $PWD/cfg.env \
-   --volume FpCasbLogsVolume:/forcepoint-logs \
+   --volume FpLogsVolume:/forcepoint-logs \
    fp-casb-exporter-aws
 ```
 
@@ -104,6 +104,6 @@ Note: this depends on fp-casb-siem-importer container running
 docker run -itd \
    --name fp-casb-exporter-aws \
    --volume $PWD/cfg.json:/usr/fp-casb-exporter-aws/cfg.json \
-   --volume FpCasbLogsVolume:/forcepoint-logs \
+   --volume FpLogsVolume:/forcepoint-logs \
    fp-casb-exporter-aws
 ```
